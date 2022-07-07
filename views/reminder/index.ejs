@@ -1,0 +1,23 @@
+<%- include ("../partial/navbar") %>
+<div class="container">
+  <h1 class="page-header">Reminders</h1>
+
+  <ul class="list-group">
+    <% reminders.forEach(function (elem) { %>
+      <li class="list-group-item">
+        <strong>
+          <%= elem.title %>
+        </strong>
+        <%= elem.description %>
+          || Completed:
+          <!-- If we didn't have ejs we were not able to use if statement here -->
+          <% if (elem.completed?.toString() == "true") { %>
+            <span class="badge badge-success">True</span>
+            <% } else { %>
+              <span class="badge badge-danger">False</span>
+              <% } %>
+                <a class="pull-right" href=<%="/reminder/" + elem.id %>>View</a>
+      </li>
+      <% }) %>
+  </ul>
+</div>
